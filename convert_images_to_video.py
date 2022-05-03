@@ -21,8 +21,10 @@ def convert_to_video(input_dir: pathlib.Path, output_dir: pathlib.Path, output_f
     return err
 
 
-def convert_from_video(input_dir: pathlib.Path, output_dir: pathlib.Path) -> str:
-    raise NotImplementedError()
+def convert_from_video(input_dir: pathlib.Path, output_dir: pathlib.Path) -> str:  # TODO: testit
+    for fn in input_dir.glob("*.MOV"):
+        out, err = ffmpeg.input(fn).output(str(output_dir / r"%4d.bmp"), pix_fmt="gray").run(quiet=True)
+    return err
 
 
 def group_and_convert_to_video(input_dir: pathlib.Path, output_dir: pathlib.Path) -> None:
