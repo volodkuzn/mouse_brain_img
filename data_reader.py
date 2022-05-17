@@ -1,4 +1,4 @@
-from typing import NamedTuple, Union
+from typing import List, NamedTuple, Union
 import typing
 import ffmpeg
 import pathlib
@@ -26,7 +26,7 @@ class BrainImages(object):
 
     @staticmethod
     def from_video(
-        video_paths: list[Union[str, pathlib.Path]],
+        video_paths: List[Union[str, pathlib.Path]],
         *,
         flatfield: typing.Optional[Union[ImageSequence, float]] = None,
         dot_coords: typing.Optional[Point] = None,
